@@ -1,34 +1,21 @@
 #pragma once
+#include "..\OOP_in_C\coop.h"
 
-typedef struct obj obj;
+DECLARE_CLASS_NAME(obj)
 
-struct obj_pri
-{
+class_begin(obj)
+public(obj)
+	char* str;
+	int method_declare GetX decl_args();
+	int method_declare GetY decl_args();
+	void method_declare SetX decl_args(int);
+	void method_declare SetY decl_args(int);
+end_data
+protected(obj)
+	char symb;
+end_data
+private(obj)
 	int x;
 	int y;
-};
-struct obj_pro
-{
-	char symb;
-};
-struct obj_pub
-{
-	char* str;
-	int (*GetX)();
-	int (*GetY)();
-	obj (*obj)();
-};
-struct obj_this
-{
-	struct obj_pub;
-	struct obj_pro;
-	struct obj_pri;
-};
-struct obj
-{
-	struct obj_pub;
-};
-
-int GetX();
-int GetY();
-obj Constructor();
+end_data
+class_end(obj)

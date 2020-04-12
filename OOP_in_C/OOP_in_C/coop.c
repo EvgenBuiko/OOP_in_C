@@ -1,0 +1,2 @@
+
+struct method_connecter {};

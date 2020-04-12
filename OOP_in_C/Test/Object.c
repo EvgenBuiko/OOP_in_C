@@ -1,24 +1,32 @@
+#include<malloc.h>
+#include<stdio.h>
 #include "Object.h"
 
-struct obj_this this_obj;
-
-int GetX() { return this_obj.x; }
-int GetY() { return this_obj.y; }
-
-obj Public_Constructor()
-{
-	this_obj.x = 5;
-	this_obj.y = 10;
-	this_obj.symb = 'x';
-	this_obj.str = "World";
-	obj* ret = (obj*)&this_obj;
-	return *ret;
+int GetX method_define args()
+{ 
+	return this->x; 
+}
+int GetY method_define args()
+{ 
+	return this->y; 
+}
+void SetX method_define args(int x)
+{ 
+	this->x = x; 
+}
+void SetY method_define args(int y)
+{ 
+	this->y = y; 
 }
 
-obj Constructor()
+BEGIN_CONTRUCTOR(obj) 
 {
-	this_obj.GetX = GetX;
-	this_obj.GetY = GetY;
-	return Public_Constructor();
-}
-
+	method_construct(GetX);
+	method_construct(GetY);
+	method_construct(SetX);
+	method_construct(SetY);
+	this->x = 5;
+	this->y = 10;
+	this->symb = 'x';
+	this->str = "World";
+} END_CONTRUCTOR(obj)
