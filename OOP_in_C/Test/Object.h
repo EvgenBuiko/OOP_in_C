@@ -1,9 +1,7 @@
 #pragma once
 #include "..\OOP_in_C\coop.h"
 
-DECLARE_CLASS_NAME(obj)
-
-class_begin(obj)
+class obj)
 public(obj)
 	char* str;
 	int method_declare GetX decl_args();

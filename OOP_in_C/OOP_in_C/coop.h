@@ -3,8 +3,7 @@
 char* cur_class_name;
 #define DECLARE_CLASS(ClassName) typedef struct ClassName##* ClassName;
 #define DECLARE_SELF(ClassName) typedef struct ClassName##_this* self;
-#define DECLARE_CLASS_NAME(ClassName) typedef  struct ClassName##_pub pub; 
-
+#define GETLINE(x) __COUNTER__
 /*	---	Contructor	---	*/
 #define BEGIN_CONTRUCTOR(ClassName) \
 ClassName Construct() \
@@ -19,7 +18,7 @@ ClassName Construct() \
 /*	---	Class	---	*/
 #define class_begin(ClassName) \
 DECLARE_CLASS(ClassName) \
-DECLARE_SELF(ClassName) 
+DECLARE_SELF(ClassName)	
 #define class_end(ClassName) \
 struct ClassName##_this \
 { \
@@ -36,7 +35,8 @@ ClassName Construct();
 #define private(ClassName) struct ClassName##_pri \
 { 
 #define end_data };
-#define ppublic public(pub)
+
+#define class class_begin(
 /*	---	Class	---	*/
 
 
